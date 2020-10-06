@@ -1,3 +1,3 @@
 import React from "react";
-export const themes = {}
+export const user = {}
 export const UserContext = React.createContext();
