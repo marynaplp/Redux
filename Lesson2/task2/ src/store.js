@@ -21,6 +21,7 @@ export const reset = () => {
 };
 
 const initialState = {
+    // value: 0,
     history: [],
 };
 
