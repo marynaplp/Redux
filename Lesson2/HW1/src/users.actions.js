@@ -1,15 +1,16 @@
-export const ADD = 'ADD_USER';
-export const DELETE = 'DELETE_USER';
+export const ADDUSER = "USERS/ADDUSER";
+export const DELETEUSER = "USERS/DELETEUSER";
 
 export const addUser = (data) => {
     return {
-        type: ADD,
+        type: ADDUSER,
         user: data,
-    }
-}
+    };
+};
+
 export const deleteUser = (id) => {
     return {
-        type: DELETE,
+        type: DELETEUSER,
         id,
-    }
-}
+    };
+};
