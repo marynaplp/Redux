@@ -11,15 +11,15 @@ export const addUser = (userData) => {
     };
 };
 
-export const deleteUser = (userid) => {
+export const deleteUser = (userId) => {
     return {
         type: DELETE_USER,
         payload: {
-            userData
+            userId
         }
     };
 };
-export const updateUser = (userid, userData) => {
+export const updateUser = (userId, userData) => {
     return {
         type: DELETE_USER,
         payload: {
