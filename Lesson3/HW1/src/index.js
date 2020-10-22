@@ -1,15 +1,9 @@
 import store from "./store";
-import { setLanguage } from "./language.actions.js";
-import { addProduct, removeProduct } from "./cart.actions.js"
-import { setUser, removeUser } from "./user.actions.js"
+import { setUser, removeUser } from "./user.actions";
+import { addProduct, removeProduct } from "./cart.actions";
+import { setLanguage } from "./language.actions";
 
-
-store.subcribe(() => console.log(store.getState()))
+store.subscribe(() => console.log(store.getState()));
 store.dispatch(setLanguage("ua"));
-store.dispatch(addProduct({
-    id: "4",
-    name: "milk"
-}));
-store.dispatch(setUser({
-    name: "Marina "
-}));
+store.dispatch(addProduct({ id: 1, name: "milk" }));
+store.dispatch(setUser({ name: "Tom" }));

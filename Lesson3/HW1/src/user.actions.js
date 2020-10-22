@@ -6,15 +6,12 @@ export const setUser = (userData) => {
         type: SET_USER,
         payload: {
             userData,
-        }
+        },
     };
 };
 
-export const removeUser = (userId) => {
+export const removeUser = () => {
     return {
         type: REMOVE_USER,
-        payload: {
-            userId
-        }
     };
 };
