@@ -11,7 +11,7 @@ export const addProduct = (productData) => {
     };
 };
 
-export const removePoduct = (productId) => {
+export const removeProduct = (productId) => {
     return {
         type: REMOVE_PRODUCT,
         payload: {
