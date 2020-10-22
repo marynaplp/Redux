@@ -1,4 +1,4 @@
-import { ADD_USER, REMOVE_USER } from "./users.actions";
+import { SET_USER, REMOVE_USER } from "./users.actions";
 
 const initialState = {
     usersList: [],
@@ -6,7 +6,7 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_USER:
+        case SET_USER:
             {
                 return {
                     ...state,
