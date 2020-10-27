@@ -2,13 +2,9 @@ import React from "react";
 import User from "./User";
 import Pagination from "./Pagination";
 import { connect } from "react-redux";
-import { goPrevPage, goNextPage }from "./users.actions";
-import { PropTypes } from "prop-types";
-import {usersListSelector, currentPageSelector} from "./users.selectors"
+import * as usersAction from "./users.actions";
 
 const UsersList = ({ users, currentPage, goNext, goPrev }) => {
-    const start = currentPage * itemsPerPage;
-    const usersToDispay = users.slice(start, start + itemsPerPage)
     return (
         <div>
             <Pagination
@@ -27,16 +23,11 @@ const UsersList = ({ users, currentPage, goNext, goPrev }) => {
         </div>
     );
 };
-UsersList.proTypes = {
-    users: checkPropTypes.arrayOf(PropTypes.shape()).isRequired,
-    currentPage:PropTypes.string.isRequired,
-    goNext:PropTypes.func.isRequired,
-    goPrev: PropTypes.func.isRequired,
-}
+
 const mapState = (state) => {
     return {
-        users: usersListSelector(state),
-        currentPage: currentPageSelector(state),
+        users: state.usersList,
+        currentPage: state.currentPage,
     };
 };
 
