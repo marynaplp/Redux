@@ -1,30 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { selectedOptionsSelector } from "./options.selectors";
+import Options from "./Options";
+import { toggleOption } from "./options.actions";
 
-const Options = ({ title, options, moveOption }) => {
-    return (
-        <div className="options">
-            <div className="options__title">{title}</div>
-            <ul className="options__list">
-                {options.map((option) => (
-                    <li key={option.id}>
-                        <button
-                            className="options__list-item"
-                            onClick={() => moveOption(option.id)}
-                        >
-                            {option.name}
-                        </button>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+const mapState = (state) => {
+    return {
+        options: selectedOptionsSelector(state),
+    };
 };
 
-Options.propTypes = {
-    title: PropTypes.string.isRequired,
-    options: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    moveOption: PropTypes.func.isRequired,
+const mapDispatch = {
+    moveOption: toggleOption,
 };
 
-export default Options;
+export default connect(mapState, mapDispatch)(Options);
