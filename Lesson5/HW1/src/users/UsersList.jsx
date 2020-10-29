@@ -1,24 +1,22 @@
 import React from "react";
+import Filter from "../Filter";
 import User from "./User";
-import Pagination from "./Pagination";
 import { connect } from "react-redux";
-import * as usersAction from "./users.actions";
+import { filteredUsersSelector } from "./users.selectors";
+import * as usersActions from "./users.actions";
 
-const UsersList = ({ users, currentPage, goNext, goPrev }) => {
+const UsersList = ({ usersList, setFilterText, filterText }) => {
     return (
         <div>
-            <Pagination
-                goPrev={goPrev}
-                goNext={goNext}
-                currentPage={currentPage}
-                totalItems={users.length}
+            <Filter
+                filterText={filterText}
+                count={usersList.length}
+                onChange={setFilterText}
             />
             <ul className="users">
-                {users
-                    .slice(currentPage * 3, currentPage * 3 + 3)
-                    .map((user) => (
-                        <User key={user.id} name={user.name} age={user.age} />
-                    ))}
+                {usersList.map((user) => (
+                    <User key={user.id} {...user} />
+                ))}
             </ul>
         </div>
     );
@@ -26,17 +24,13 @@ const UsersList = ({ users, currentPage, goNext, goPrev }) => {
 
 const mapState = (state) => {
     return {
-        users: state.usersList,
-        currentPage: state.currentPage,
+        usersList: filteredUsersSelector(state),
+        filterText: state.users.filterText,
     };
 };
 
 const mapDispatch = {
-    goNext: usersAction.goNextPage,
-    goPrev: usersAction.goPrevPage,
+    setFilterText: usersActions.setFilterText,
 };
 
-const connector = connect(mapState, mapDispatch);
-const ConnectedUsers = connector(UsersList);
-
-export default ConnectedUsers;
+export default connect(mapState, mapDispatch)(UsersList);

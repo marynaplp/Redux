@@ -1,14 +1,10 @@
-export const NEXT_PAGE = "USERS/NEXT_PAGE";
-export const PREV_PAGE = "USERS/PREV_PAGE";
+export const FILTER_TEXT = "FILTERED_USERS/FILTERED_TEXT";
 
-export const goNextPage = () => {
+export const setFilterText = (text) => {
     return {
-        type: NEXT_PAGE,
-    };
-};
-
-export const goPrevPage = () => {
-    return {
-        type: PREV_PAGE,
+        type: FILTER_TEXT,
+        payload: {
+            text,
+        },
     };
 };
