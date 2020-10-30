@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import optionsReducer from "./options/options.reducer";
+import reducer from "./users/users.reducer";
 
 const reducer = combineReducers({
     options: optionsReducer,
