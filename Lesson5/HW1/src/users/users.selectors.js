@@ -1,25 +1,18 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
-export const optionsListSelector = (state) => {
-    return state.options.optionsList;
-};
-export const selectedIdsSelector = (state) => {
-    return state.options.selected;
+export const usersListSelector = state => {
+    return state.users.usersList;
 };
 
-export const selectedOptionsSelector = createSelector(
-    [optionsListSelector, selectedIdsSelector],
-    (allOptionsList, selectedIds) => {
-        return allOptionsList.filter((option) =>
-            selectedIds.includes(option.id)
-        );
-    }
-);
-export const avaibleOptionsSelecter = createSelector(
-    [optionsListSelector, selectedIdsSelector],
-    (allOptionsList, selectedIds) => {
-        return allOptionsList.filter(
-            (option) => !selectedIds.includes(option.id)
-        );
-    }
+export const filterTextSelector = state => {
+    return state.users.filterText;
+};
+
+export const filteredUsersSelector = createSelector(
+    [usersListSelector, filterTextSelector],
+    (usersList, filterText) => {
+        return usersList.filter(user => {
+            return user.name.toLowerCase().includes(filterText.toLowerCase());
+        });
+    },
 );
