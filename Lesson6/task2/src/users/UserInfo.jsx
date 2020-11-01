@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { isFetchingSelector, userDataSelector } from './users.selectors';
+import { isFetchingSelector, userDataSelector } from './user.selectors';
 import Spinner from './Spinner';
 
 class UserInfo extends React.Component {
