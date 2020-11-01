@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { isFetchingSelector, userDataSelector } from "./users.selectors";
+import { isFetchingSelector, userDataSelector } from "./user.selectors";
 import Spinner from "./Spinner";
 
 const UserInfo = ({ userData, isFetching }) => {
@@ -11,16 +11,10 @@ const UserInfo = ({ userData, isFetching }) => {
 
     return (
         <div className="user">
-            <img
-                alt="User Avatar"
-                src={userData.avatar_url}
-                className="user__avatar"
-            />
+            <img alt="User Avatar" src={userData.avatar_url} className="user__avatar" />
             <div className="user__info">
                 <span className="user__name">{userData.name}</span>
-                <span className="user__location">
-                    {`from ${userData.location}`}
-                </span>
+                <span className="user__location">{`from ${userData.location}`}</span>
             </div>
         </div>
     );
