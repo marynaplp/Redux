@@ -4,7 +4,7 @@ import { weatherReducer } from './weather/weather.reducer';
 
 
 const reducer = combineReducers({
-    cities: weatherReducer,
+    weather: weatherReducer,
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
